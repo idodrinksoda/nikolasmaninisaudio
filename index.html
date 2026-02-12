@@ -1,309 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nikolas Maninis Audio - Professional Audio Editing Services</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nikolas Maninis Audio — Podcast & ASMR Editing</title>
+  <meta name="description" content="Personal, detail-focused podcast and ASMR editing. Clean, consistent, distraction-free sound." />
+  <style>
+    :root{
+      --bg: #f7f2ec;
+      --panel: #fffaf4;
+      --text: #231b16;
+      --muted: #6a5648;
+      --hair: rgba(90,65,45,0.28);
+      --accent: #b7702d;
+      --max: 860px;
+      --radius: 16px;
+      --shadow: 0 12px 30px rgba(40,25,12,0.12);
+      --shadow-soft: 0 6px 16px rgba(40,25,12,0.08);
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
-        }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin: 0;
+      font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.65;
+      background:
+        radial-gradient(1200px 600px at 10% 0%, rgba(232,185,130,0.20), transparent 55%),
+        radial-gradient(900px 500px at 90% 10%, rgba(245,210,175,0.28), transparent 60%),
+        linear-gradient(180deg, #fff8f1 0%, #f3ece4 55%, #efe5db 100%);
+      color: var(--text);
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    a{ color: var(--text); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
 
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 42px 20px 80px;
+    }
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
+    header{
+      padding: 28px 0 20px;
+      border-bottom: 1px solid var(--hair);
+      margin-bottom: 26px;
+    }
 
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
+    .kicker{
+      color: var(--muted);
+      font-size: 0.92rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+    }
 
-        section {
-            background: white;
-            margin: 2rem auto;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+    h1{
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      margin: 0 0 10px;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+    }
 
-        section h2 {
-            color: #667eea;
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 0.5rem;
-        }
+    .subtitle{
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 60ch;
+    }
 
-        .about p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
-        }
+    .cta{
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
 
-        .rates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid rgba(150,110,70,0.35);
+      border-radius: 999px;
+      background: rgba(255,248,240,0.92);
+      box-shadow: var(--shadow-soft);
+      transition: transform 120ms ease, background 120ms ease, box-shadow 120ms ease;
+      font-weight: 600;
+    }
+    .btn:hover{
+      background: rgba(255,248,240,1);
+      box-shadow: var(--shadow);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+    .btn small{
+      color: var(--muted);
+      font-weight: 500;
+    }
 
-        .rate-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
+    section{
+      padding: 18px 0;
+      border-bottom: 1px solid var(--hair);
+    }
 
-        .rate-card:hover {
-            transform: translateY(-5px);
-        }
+    h2{
+      font-size: 1.1rem;
+      margin: 0 0 10px;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+      color: #2b211b;
+    }
 
-        .rate-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
+    p{ margin: 0 0 12px; color: var(--text); }
+    .muted{ color: var(--muted); }
 
-        .rate-card .price {
-            font-size: 2rem;
-            font-weight: bold;
-            margin: 1rem 0;
-        }
+    .grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 10px;
+    }
 
-        .rate-card ul {
-            list-style: none;
-            text-align: left;
-            margin-top: 1rem;
-        }
+    .card{
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,244,232,0.95)),
+        var(--panel);
+      border: 1px solid var(--hair);
+      border-top: 2px solid rgba(183,112,45,0.35);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow-soft);
+    }
 
-        .rate-card ul li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-        }
+    ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    li{ margin: 6px 0; }
 
-        .rate-card ul li:last-child {
-            border-bottom: none;
-        }
+    .split{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
 
-        .samples-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
+    .audio{
+      width: 100%;
+      margin-top: 10px;
+      filter: drop-shadow(0 8px 16px rgba(40,25,12,0.08));
+    }
 
-        .sample-card {
-            background: #f9f9f9;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-        }
+    footer{
+      padding-top: 22px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
 
-        .sample-card h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-
-        .sample-card p {
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .sample-card audio {
-            width: 100%;
-            margin-top: 1rem;
-        }
-
-        .contact {
-            text-align: center;
-        }
-
-        .contact-info {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            margin-top: 1.5rem;
-        }
-
-        .contact-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-info a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.3rem;
-            font-weight: bold;
-            border: 2px solid white;
-            padding: 0.8rem 2rem;
-            display: inline-block;
-            margin-top: 1rem;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .contact-info a:hover {
-            background: white;
-            color: #667eea;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            color: #666;
-            margin-top: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            section h2 {
-                font-size: 1.5rem;
-            }
-
-            .rates-grid,
-            .samples-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    @media (max-width: 720px){
+      .split{ grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
+
 <body>
+  <div class="wrap">
     <header>
-        <div class="container">
-            <h1>Nikolas Maninis Audio</h1>
-            <p>Professional Audio Editing Services</p>
-        </div>
+      <p class="kicker">Podcast • Spoken Word • ASMR</p>
+      <h1>Nikolas Maninis Audio</h1>
+      <p class="subtitle">
+        Personal, detail-focused audio editing. Clean voices, controlled sound, and a natural finish —
+        without distractions.
+      </p>
+
+      <div class="cta">
+        <a class="btn" href="mailto:nikolasmaninisaudio@gmail.com">
+          Email me <small>nikolasmaninisaudio@gmail.com</small>
+        </a>
+        <a class="btn" href="#samples">Hear samples</a>
+      </div>
     </header>
 
-    <div class="container">
-        <!-- About Section -->
-        <section class="about">
-            <h2>About</h2>
-            <p>
-                Welcome to Nikolas Maninis Audio! I specialize in professional audio editing services 
-                for podcasts and ASMR content. With meticulous attention to detail and a passion for 
-                pristine sound quality, I help creators bring their audio visions to life. Whether you're 
-                a podcaster looking to polish your episodes or an ASMR artist seeking that perfect 
-                immersive experience, I deliver high-quality editing that makes your content stand out.
-            </p>
-        </section>
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        I’m Nikolas. I edit podcasts and ASMR with a simple goal: make your audio feel effortless to listen to.
+      </p>
+      <p class="muted">
+        I keep processing natural and controlled — especially for voices and texture-sensitive ASMR recordings.
+      </p>
+    </section>
 
-        <!-- Rates Section -->
-        <section class="rates">
-            <h2>Rates</h2>
-            <div class="rates-grid">
-                <div class="rate-card">
-                    <h3>Podcast Editing</h3>
-                    <div class="price">$50/hour</div>
-                    <ul>
-                        <li>✓ Noise reduction</li>
-                        <li>✓ Audio leveling</li>
-                        <li>✓ Intro/Outro integration</li>
-                        <li>✓ Music & sound effects</li>
-                        <li>✓ Professional mixing</li>
-                    </ul>
-                </div>
-                <div class="rate-card">
-                    <h3>ASMR Audio</h3>
-                    <div class="price">$60/hour</div>
-                    <ul>
-                        <li>✓ Enhanced detail clarity</li>
-                        <li>✓ Spatial audio optimization</li>
-                        <li>✓ Background noise removal</li>
-                        <li>✓ Binaural processing</li>
-                        <li>✓ Dynamic range enhancement</li>
-                    </ul>
-                </div>
-                <div class="rate-card">
-                    <h3>Full Production</h3>
-                    <div class="price">Custom</div>
-                    <ul>
-                        <li>✓ Complete audio production</li>
-                        <li>✓ Multi-track editing</li>
-                        <li>✓ Mastering services</li>
-                        <li>✓ Sound design</li>
-                        <li>✓ Consultation included</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+    <section id="services">
+      <h2>Services</h2>
+      <div class="split">
+        <div class="card">
+          <strong>Podcast & spoken-word editing</strong>
+          <ul>
+            <li>Cleanup (noise, hum, clicks) without over-processing</li>
+            <li>Leveling and consistency across sections</li>
+            <li>Edits for pacing, mistakes, and dead air</li>
+            <li>Delivery in platform-ready formats</li>
+          </ul>
+        </div>
 
-        <!-- Samples Section -->
-        <section class="samples">
-            <h2>Sample Work</h2>
-            <div class="samples-grid">
-                <div class="sample-card">
-                    <h3>Podcast Sample</h3>
-                    <p>Interview-style podcast with professional editing, noise reduction, and balanced audio levels.</p>
-                    <audio controls>
-                        <source src="samples/podcast-sample.mp3" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
-                </div>
-                <div class="sample-card">
-                    <h3>ASMR Sample</h3>
-                    <p>Immersive ASMR experience with enhanced clarity and binaural processing for optimal relaxation.</p>
-                    <audio controls>
-                        <source src="samples/asmr-sample.mp3" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
-                </div>
-                <div class="sample-card">
-                    <h3>Production Sample</h3>
-                    <p>Full audio production showcasing multi-track editing, sound design, and professional mastering.</p>
-                    <audio controls>
-                        <source src="samples/production-sample.mp3" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
-                </div>
-            </div>
-        </section>
+        <div class="card">
+          <strong>ASMR editing</strong>
+          <ul>
+            <li>Texture-preserving noise control</li>
+            <li>Click/mouth management (selective, ASMR-safe)</li>
+            <li>Stereo/binaural care and gentle balancing</li>
+            <li>Clean output without losing the “close” feel</li>
+          </ul>
+        </div>
+      </div>
 
-        <!-- Contact Section -->
-        <section class="contact">
-            <h2>Get in Touch</h2>
-            <p>Ready to elevate your audio content? Let's discuss your project!</p>
-            <div class="contact-info">
-                <h3>Contact Me</h3>
-                <a href="mailto:nikolasmaninisaudio@gmail.com">nikolasmaninisaudio@gmail.com</a>
-            </div>
-        </section>
-    </div>
+      <div class="grid">
+        <div class="card">
+          <strong>Voice acting audition demos</strong>
+          <p class="muted">
+            Short-form edit for audition submissions, offered at a smaller fee.
+          </p>
+          <ul>
+            <li>Tight cleanup and level matching</li>
+            <li>Consistent tone and clarity for reads</li>
+            <li>Fast turnaround for auditions</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <h2>How it works</h2>
+      <div class="grid">
+        <div class="card">
+          <p><strong>1) Send your audio</strong></p>
+          <p class="muted">Raw files + any notes (target platform, references, deadline).</p>
+        </div>
+        <div class="card">
+          <p><strong>2) I review and quote</strong></p>
+          <p class="muted">Based on length, condition, and turnaround. No tiers needed.</p>
+        </div>
+        <div class="card">
+          <p><strong>3) Delivery + light revisions</strong></p>
+          <p class="muted">You get polished audio, and we can make small adjustments if needed.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="samples">
+      <h2 id="samples">Samples</h2>
+      <p class="muted">Replace the file paths below with your real exports.</p>
+
+      <div class="split">
+        <div class="card">
+          <strong>Podcast sample</strong>
+          <p class="muted">Balanced dialogue, cleanup, and natural polish.</p>
+          <audio class="audio" controls>
+            <source src="samples/podcast-sample.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+
+        <div class="card">
+          <strong>ASMR sample</strong>
+          <p class="muted">Texture-preserving cleanup with stereo care.</p>
+          <audio class="audio" controls>
+            <source src="samples/asmr-sample.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px;">
+        <strong>Before / after (optional)</strong>
+        <p class="muted">
+          If you can, include a short before/after clip. It converts clients fast.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        Email me a link to your files (Drive/Dropbox) and a quick note about the project.
+      </p>
+      <p>
+        <a class="btn" href="mailto:nikolasmaninisaudio@gmail.com">nikolasmaninisaudio@gmail.com</a>
+      </p>
+      <p class="muted">
+        Vancouver, BC • Remote friendly
+      </p>
+    </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2026 Nikolas Maninis Audio. All rights reserved.</p>
-        </div>
+      <p>© 2026 Nikolas Maninis Audio</p>
     </footer>
+  </div>
 </body>
 </html>
