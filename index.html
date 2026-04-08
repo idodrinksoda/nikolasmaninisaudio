@@ -3,248 +3,423 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nikolas Maninis Audio — Podcast & Spoken-Word Editing</title>
-  <meta name="description" content="Personal, detail-focused podcast and spoken-word editing. Clean, consistent, distraction-free sound." />
+  <title>Nikolas Maninis &mdash; Audio &amp; Video Editing</title>
+  <meta name="description" content="Professional audio and video editing services &mdash; podcast production, spoken-word, voice demos, and video editing. Based in Vancouver, BC." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    :root{
-      --bg: #f7f2ec;
-      --panel: #fffaf4;
-      --text: #231b16;
-      --muted: #6a5648;
-      --hair: rgba(90,65,45,0.28);
-      --accent: #b7702d;
-      --max: 860px;
-      --radius: 16px;
-      --shadow: 0 12px 30px rgba(40,25,12,0.12);
-      --shadow-soft: 0 6px 16px rgba(40,25,12,0.08);
+    /* Design tokens */
+    :root {
+      --bg:        #0d0f12;
+      --surface:   #13161b;
+      --surface-2: #1a1e25;
+      --border:    rgba(255,255,255,0.07);
+      --accent:    #4f8ef7;
+      --text:      #e8eaf0;
+      --muted:     #7a8196;
+      --max:       820px;
+      --radius:    12px;
     }
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body{
-      margin: 0;
-      font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      line-height: 1.65;
-      background:
-        radial-gradient(1200px 600px at 10% 0%, rgba(232,185,130,0.20), transparent 55%),
-        radial-gradient(900px 500px at 90% 10%, rgba(245,210,175,0.28), transparent 60%),
-        linear-gradient(180deg, #fff8f1 0%, #f3ece4 55%, #efe5db 100%);
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      background: var(--bg);
       color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
     }
 
-    a{ color: var(--text); text-decoration: none; }
-    a:hover{ text-decoration: underline; }
-
-    .wrap{
+    /* Layout */
+    .wrap {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 42px 20px 80px;
+      padding: 0 24px 80px;
     }
 
-    header{
-      padding: 28px 0 20px;
-      border-bottom: 1px solid var(--hair);
-      margin-bottom: 26px;
+    /* Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,15,18,0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
     }
-
-    .kicker{
-      color: var(--muted);
-      font-size: 0.92rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin: 0 0 10px;
-    }
-
-    h1{
-      font-size: clamp(2rem, 4vw, 2.6rem);
-      margin: 0 0 10px;
-      font-weight: 650;
-      letter-spacing: -0.02em;
-    }
-
-    .subtitle{
-      margin: 0;
-      color: var(--muted);
-      font-size: 1.05rem;
-      max-width: 60ch;
-    }
-
-    .cta{
-      margin-top: 18px;
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 58px;
       display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
       align-items: center;
+      justify-content: space-between;
     }
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 150ms;
+    }
+    .nav-links a:hover { color: var(--text); }
 
-    .btn{
+    /* Hero */
+    .hero {
+      padding: 80px 0 60px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-tag {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      border: 1px solid rgba(150,110,70,0.35);
-      border-radius: 999px;
-      background: rgba(255,248,240,0.92);
-      box-shadow: var(--shadow-soft);
-      transition: transform 120ms ease, background 120ms ease, box-shadow 120ms ease;
+      gap: 8px;
+      font-size: 0.8rem;
       font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
     }
-    .btn:hover{
-      background: rgba(255,248,240,1);
-      box-shadow: var(--shadow);
-      transform: translateY(-1px);
-      text-decoration: none;
+    .hero-tag::before {
+      content: "";
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
     }
-    .btn small{
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, #e8eaf0 30%, #7a8196 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
       color: var(--muted);
-      font-weight: 500;
+      max-width: 52ch;
+      margin-bottom: 32px;
     }
-
-    section{
-      padding: 18px 0;
-      border-bottom: 1px solid var(--hair);
-    }
-
-    h2{
-      font-size: 1.1rem;
-      margin: 0 0 10px;
-      font-weight: 650;
-      letter-spacing: 0.02em;
-      color: #2b211b;
-    }
-
-    p{ margin: 0 0 12px; color: var(--text); }
-    .muted{ color: var(--muted); }
-
-    .grid{
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .card{
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,244,232,0.95)),
-        var(--panel);
-      border: 1px solid var(--hair);
-      border-top: 2px solid rgba(183,112,45,0.35);
-      border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    ul{
-      margin: 10px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-    }
-    li{ margin: 6px 0; }
-
-    .split{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    footer{
-      padding-top: 22px;
-      color: var(--muted);
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
       font-size: 0.95rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: opacity 150ms, transform 150ms;
+    }
+    .btn-primary:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
     }
 
-    @media (max-width: 720px){
-      .split{ grid-template-columns: 1fr; }
+    /* Sections */
+    section {
+      padding: 52px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 1.55rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+    p { color: var(--muted); margin-bottom: 12px; }
+
+    /* Service cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      transition: border-color 200ms;
+    }
+    .card:hover { border-color: rgba(79,142,247,0.35); }
+    .card-icon {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .card p { font-size: 0.9rem; margin-bottom: 0; }
+    .card ul {
+      margin-top: 10px;
+      padding-left: 16px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    .card li { margin: 5px 0; }
+
+    /* Disclaimer */
+    .disclaimer {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: var(--surface-2);
+      border: 1px solid rgba(255,200,80,0.18);
+      border-left: 3px solid #f5c518;
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      margin-top: 24px;
+    }
+    .disclaimer-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+    .disclaimer p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+    .disclaimer strong { color: #e8c96a; font-weight: 600; }
+
+    /* Process steps */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+    }
+    .step-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .step h3 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+    .step p { font-size: 0.88rem; margin: 0; }
+
+    /* Contact */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .contact-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+    .contact-card p { margin: 0; font-size: 0.9rem; }
+
+    /* Footer */
+    footer {
+      padding-top: 36px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    @media (max-width: 560px) {
+      .nav-links { display: none; }
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <header>
-      <p class="kicker">Podcast • Spoken Word • Voice</p>
-      <h1>Nikolas Maninis Audio</h1>
-      <p class="subtitle">
-        Personal, detail-focused audio editing. Clean voices, controlled sound, and a natural finish
-      </p>
 
-      <div class="cta">
-        <a class="btn" href="mailto:nikolasmaninisaudio@gmail.com">
-          Email me <small>nikolasmaninisaudio@gmail.com</small>
-        </a>
-      </div>
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="#">Nikolas Maninis</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="wrap">
+
+    <header class="hero">
+      <p class="hero-tag">Audio &amp; Video Editing</p>
+      <h1>Sound and vision,<br>done right.</h1>
+      <p class="hero-sub">
+        Professional editing for podcasts, spoken-word recordings, voice demos, and video &mdash; detail-focused, deadline-aware, and built around your project.
+      </p>
+      <a class="btn-primary" href="mailto:nikolasmaninisaudio@gmail.com">
+        Get in touch &rarr;
+      </a>
     </header>
 
-    <section id="about">
-      <h2>About</h2>
-      <p>
-        I’m Nikolas, with a degree in audio engineering and a careful, detail-focused approach to editing podcasts and spoken-word audio. I use professional, industry-standard software to make your audio sound clean, clear, and polished while still keeping the voice natural and full of personality.
-      </p>
-    </section>
+    <main>
 
-    <section id="services">
-      <h2>Services</h2>
-      <div class="grid">
-        <div class="card">
-          <strong>Podcast & spoken-word editing</strong>
-          <ul>
-            <li>Cleanup (noise, hum, clicks) without over-processing</li>
-            <li>Leveling and consistency across sections</li>
-            <li>Edits for pacing, mistakes, and dead air</li>
-            <li>Delivery in platform-ready formats</li>
-          </ul>
+      <section id="about">
+        <p class="section-label">About</p>
+        <h2>Who I am</h2>
+        <p>
+          I&rsquo;m Nikolas, an audio engineer based in Vancouver, BC. With a degree in audio engineering and years of hands-on experience, I take a careful, detail-focused approach to every project &mdash; whether that&rsquo;s a weekly podcast, a voice acting audition demo, or a video that needs a polished edit.
+        </p>
+        <p>
+          My goal is simple: deliver clean, professional results that match your vision, without over-processing or losing the natural feel of your content.
+        </p>
+      </section>
+
+      <section id="services">
+        <p class="section-label">Services</p>
+        <h2>What I do</h2>
+
+        <div class="cards">
+
+          <div class="card">
+            <span class="card-icon">&#127897;</span>
+            <h3>Podcast &amp; Spoken-Word Editing</h3>
+            <p>Clean, consistent audio that keeps your listeners engaged.</p>
+            <ul>
+              <li>Noise, hum, and click removal</li>
+              <li>Leveling and dynamic consistency</li>
+              <li>Pacing edits, mistake removal, dead air cuts</li>
+              <li>Platform-ready delivery formats</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <span class="card-icon">&#127917;</span>
+            <h3>Voice Acting Audition Demos</h3>
+            <p>Short-form edits for audition submissions &mdash; fast and focused.</p>
+            <ul>
+              <li>Tight cleanup and level matching</li>
+              <li>Consistent tone and clarity across reads</li>
+              <li>Fast turnaround for urgent deadlines</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <span class="card-icon">&#127916;</span>
+            <h3>Video Editing</h3>
+            <p>Straightforward video edits &mdash; cuts, sync, pacing, and clean exports.</p>
+            <ul>
+              <li>Dialogue and B-roll assembly</li>
+              <li>Audio sync and mixing</li>
+              <li>Colour correction and basic visual cleanup</li>
+              <li>Delivery in web, social, or broadcast formats</li>
+            </ul>
+          </div>
+
         </div>
-      </div>
 
-      <div class="grid">
-        <div class="card">
-          <strong>Voice acting audition demos</strong>
-          <p class="muted">
-            Short-form edit for audition submissions, offered at a smaller fee.
+        <div class="disclaimer">
+          <span class="disclaimer-icon">&#9888;</span>
+          <p>
+            <strong>Graphics disclaimer:</strong> Video editing services cover cuts, assembly, audio work, and basic visual corrections. I do <strong>not</strong> offer motion graphics, complex animations, VFX, or advanced graphic design beyond simple text titles and basic overlays. If your project requires heavy graphics work, I&rsquo;m happy to point you toward specialists.
           </p>
-          <ul>
-            <li>Tight cleanup and level matching</li>
-            <li>Consistent tone and clarity for reads</li>
-            <li>Fast turnaround for auditions</li>
-          </ul>
         </div>
-      </div>
-    </section>
 
-    <section id="process">
-      <h2>How it works</h2>
-      <div class="grid">
-        <div class="card">
-          <p><strong>1) Send your audio</strong></p>
-          <p class="muted">Raw files + any notes (target platform, references, deadline).</p>
-        </div>
-        <div class="card">
-          <p><strong>2) I review and quote</strong></p>
-          <p class="muted">Based on length, condition, and turnaround. </p>
-        </div>
-        <div class="card">
-          <p><strong>3) Delivery + light revisions</strong></p>
-          <p class="muted">You get polished audio, and we can make small adjustments if needed.</p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>
-        Email me a link to your files (Drive/Dropbox) and a quick note about the project.
-      </p>
-      <p>
-        <a class="btn" href="mailto:nikolasmaninisaudio@gmail.com">nikolasmaninisaudio@gmail.com</a>
-      </p>
-      <p class="muted">
-        Vancouver, BC • Remote friendly
-      </p>
-    </section>
+      <section id="process">
+        <p class="section-label">Process</p>
+        <h2>How it works</h2>
+
+        <div class="steps">
+          <div class="step">
+            <p class="step-num">STEP 01</p>
+            <h3>Send your files</h3>
+            <p>Share your raw audio or video along with notes on your deadline, goals, and preferred delivery format.</p>
+          </div>
+          <div class="step">
+            <p class="step-num">STEP 02</p>
+            <h3>Review &amp; quote</h3>
+            <p>I review the project and provide a clear quote based on length, condition, and turnaround time. No surprises.</p>
+          </div>
+          <div class="step">
+            <p class="step-num">STEP 03</p>
+            <h3>Delivery &amp; revisions</h3>
+            <p>You receive polished, finished files. Minor tweaks are included &mdash; bigger changes are discussed upfront.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <p class="section-label">Contact</p>
+        <h2>Let&rsquo;s work together</h2>
+        <p>
+          Send me a link to your files and a short description of the project. I&rsquo;ll respond with next steps, timeline, and pricing.
+        </p>
+
+        <div class="contact-card">
+          <div>
+            <h3>Nikolas Maninis</h3>
+            <p>Vancouver, BC &middot; Remote-friendly worldwide</p>
+          </div>
+          <a class="btn-primary" href="mailto:nikolasmaninisaudio@gmail.com">
+            nikolasmaninisaudio@gmail.com
+          </a>
+        </div>
+      </section>
+
+    </main>
 
     <footer>
-      <p>© 2026 Nikolas Maninis Audio</p>
+      <span>&copy; 2026 Nikolas Maninis. All rights reserved.</span>
+      <span>nikolasmaninis.com</span>
     </footer>
+
   </div>
 </body>
 </html>
