@@ -11,13 +11,13 @@
   <style>
     /* Design tokens */
     :root {
-      --bg:        #0d0f12;
-      --surface:   #13161b;
-      --surface-2: #1a1e25;
-      --border:    rgba(255,255,255,0.07);
-      --accent:    #4f8ef7;
-      --text:      #e8eaf0;
-      --muted:     #7a8196;
+      --bg:        #e8ddd0;
+      --surface:   #f0e8dc;
+      --surface-2: #ddd1c2;
+      --border:    rgba(110,88,60,0.20);
+      --accent:    #5a4e9e;
+      --text:      #1e1a14;
+      --muted:     #4a3f35;
       --max:       820px;
       --radius:    12px;
     }
@@ -26,7 +26,8 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: "Inter", system-ui, sans-serif;
-      background: var(--bg);
+      background-color: var(--bg);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.80' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)' opacity='0.10'/%3E%3C/svg%3E");
       color: var(--text);
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
@@ -44,7 +45,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(13,15,18,0.85);
+      background: rgba(232,221,208,0.93);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
@@ -109,10 +110,7 @@
       letter-spacing: -0.03em;
       line-height: 1.15;
       margin-bottom: 18px;
-      background: linear-gradient(135deg, #e8eaf0 30%, #7a8196 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--text);
     }
     .hero-sub {
       font-size: 1.05rem;
@@ -174,7 +172,7 @@
       padding: 22px 20px;
       transition: border-color 200ms;
     }
-    .card:hover { border-color: rgba(79,142,247,0.35); }
+    .card:hover { border-color: rgba(106,93,171,0.40); }
     .card-icon {
       font-size: 1.4rem;
       margin-bottom: 12px;
@@ -202,15 +200,15 @@
       gap: 12px;
       align-items: flex-start;
       background: var(--surface-2);
-      border: 1px solid rgba(255,200,80,0.18);
-      border-left: 3px solid #f5c518;
+      border: 1px solid rgba(160,135,100,0.22);
+      border-left: 3px solid #c49a3c;
       border-radius: var(--radius);
       padding: 16px 18px;
       margin-top: 24px;
     }
     .disclaimer-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
     .disclaimer p { font-size: 0.88rem; color: var(--muted); margin: 0; }
-    .disclaimer strong { color: #e8c96a; font-weight: 600; }
+    .disclaimer strong { color: #8a6810; font-weight: 600; }
 
     /* Process steps */
     .steps {
@@ -274,8 +272,26 @@
       gap: 8px;
     }
 
+    /* About layout */
+    .about-inner {
+      display: flex;
+      gap: 36px;
+      align-items: flex-start;
+    }
+    .about-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 3px solid var(--border);
+      box-shadow: 0 4px 16px rgba(80,60,30,0.14);
+    }
+    .about-text { flex: 1; }
+
     @media (max-width: 560px) {
       .nav-links { display: none; }
+      .about-inner { flex-direction: column; align-items: center; text-align: center; }
     }
   </style>
 </head>
@@ -298,11 +314,11 @@
 
     <header class="hero">
       <p class="hero-tag">Audio &amp; Video Editing</p>
-      <h1>Sound and vision,<br>done right.</h1>
+      <h1>Clean edits, honest work.</h1>
       <p class="hero-sub">
         Professional editing for podcasts, spoken-word recordings, voice demos, and video &mdash; detail-focused, deadline-aware, and built around your project.
       </p>
-      <a class="btn-primary" href="mailto:nikolasmaninisaudio@gmail.com">
+      <a class="btn-primary" href="mailto:nikolasmaninis.io@gmail.com">
         Get in touch &rarr;
       </a>
     </header>
@@ -312,12 +328,17 @@
       <section id="about">
         <p class="section-label">About</p>
         <h2>Who I am</h2>
-        <p>
-          I&rsquo;m Nikolas, an audio engineer based in Vancouver, BC. With a degree in audio engineering and years of hands-on experience, I take a careful, detail-focused approach to every project &mdash; whether that&rsquo;s a weekly podcast, a voice acting audition demo, or a video that needs a polished edit.
-        </p>
-        <p>
-          My goal is simple: deliver clean, professional results that match your vision, without over-processing or losing the natural feel of your content.
-        </p>
+        <div class="about-inner">
+          <img class="about-photo" src="me.png" alt="Nikolas Maninis" />
+          <div class="about-text">
+            <p>
+              I&rsquo;m Nikolas, an audio engineer based in Vancouver, BC. With a degree in audio engineering and years of hands-on experience, I take a careful, detail-focused approach to every project &mdash; whether that&rsquo;s a weekly podcast, a voice acting audition demo, or a video that needs a polished edit.
+            </p>
+            <p>
+              My goal is simple: deliver clean, professional results that match your vision, without over-processing or losing the natural feel of your content.
+            </p>
+          </div>
+        </div>
       </section>
 
       <section id="services">
@@ -405,10 +426,10 @@
         <div class="contact-card">
           <div>
             <h3>Nikolas Maninis</h3>
-            <p>Vancouver, BC &middot; Remote-friendly worldwide</p>
+            <p>Vancouver, BC &middot; Remote-friendly </p>
           </div>
           <a class="btn-primary" href="mailto:nikolasmaninisaudio@gmail.com">
-            nikolasmaninisaudio@gmail.com
+            nikolasmaninis.io@gmail.com
           </a>
         </div>
       </section>
