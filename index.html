@@ -272,6 +272,60 @@
       gap: 8px;
     }
 
+    /* Samples */
+    .samples {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 28px;
+    }
+    .sample-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+    }
+    .sample-title {
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+    .sample-tracks {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .sample-track {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .sample-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 99px;
+      flex-shrink: 0;
+      width: 54px;
+      text-align: center;
+    }
+    .sample-label.before {
+      background: var(--surface-2);
+      color: var(--muted);
+    }
+    .sample-label.after {
+      background: var(--accent);
+      color: #fff;
+    }
+    audio {
+      width: 100%;
+      height: 36px;
+      accent-color: var(--accent);
+    }
+
     /* Intake form */
     .intake-card {
       background: var(--surface);
@@ -417,6 +471,7 @@
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#samples">Samples</a></li>
         <li><a href="#process">Process</a></li>
         <li><a href="#intake">Start a project / Get a quote</a></li>
       </ul>
@@ -505,6 +560,76 @@
           </p>
         </div>
 
+      </section>
+
+      <section id="samples">
+        <p class="section-label">Work samples</p>
+        <h2>Before &amp; after</h2>
+        <p>Hear the difference a clean edit makes. Press play on each track to compare.</p>
+
+        <div class="samples">
+
+          <div class="sample-card">
+            <p class="sample-title">Sample 1 &mdash; Podcast interview</p>
+            <div class="sample-tracks">
+              <div class="sample-track">
+                <span class="sample-label before">Before</span>
+                <audio controls>
+                  <source src="samples/sample1-before.mp3" type="audio/mpeg" />
+                  Your browser does not support audio playback.
+                </audio>
+              </div>
+              <div class="sample-track">
+                <span class="sample-label after">After</span>
+                <audio controls>
+                  <source src="samples/sample1-after.mp3" type="audio/mpeg" />
+                  Your browser does not support audio playback.
+                </audio>
+              </div>
+            </div>
+          </div>
+
+          <div class="sample-card">
+            <p class="sample-title">Sample 2 &mdash; Voice acting demo</p>
+            <div class="sample-tracks">
+              <div class="sample-track">
+                <span class="sample-label before">Before</span>
+                <audio controls>
+                  <source src="samples/sample2-before.mp3" type="audio/mpeg" />
+                  Your browser does not support audio playback.
+                </audio>
+              </div>
+              <div class="sample-track">
+                <span class="sample-label after">After</span>
+                <audio controls>
+                  <source src="samples/sample2-after.mp3" type="audio/mpeg" />
+                  Your browser does not support audio playback.
+                </audio>
+              </div>
+            </div>
+          </div>
+
+          <div class="sample-card">
+            <p class="sample-title">Sample 3 &mdash; Solo podcast</p>
+            <div class="sample-tracks">
+              <div class="sample-track">
+                <span class="sample-label before">Before</span>
+                <audio controls>
+                  <source src="samples/sample3-before.mp3" type="audio/mpeg" />
+                  Your browser does not support audio playback.
+                </audio>
+              </div>
+              <div class="sample-track">
+                <span class="sample-label after">After</span>
+                <audio controls>
+                  <source src="samples/sample3-after.mp3" type="audio/mpeg" />
+                  Your browser does not support audio playback.
+                </audio>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </section>
 
       <section id="process">
