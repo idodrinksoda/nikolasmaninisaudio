@@ -272,6 +272,119 @@
       gap: 8px;
     }
 
+    /* Intake form */
+    .intake-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      margin-top: 28px;
+    }
+    .intake-progress {
+      height: 4px;
+      background: var(--border);
+      border-radius: 99px;
+      margin-bottom: 28px;
+      overflow: hidden;
+    }
+    .intake-bar {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 99px;
+      transition: width 350ms ease;
+      width: 33%;
+    }
+    .intake-step { display: none; }
+    .intake-step.active { display: block; }
+    .intake-question {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 14px;
+      font-size: 1rem;
+    }
+    .intake-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .intake-opt {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+      transition: border-color 150ms, background 150ms;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+    .intake-opt:hover { border-color: var(--accent); }
+    .intake-opt input[type="radio"] { accent-color: var(--accent); flex-shrink: 0; }
+    .intake-opt:has(input:checked) {
+      border-color: var(--accent);
+      background: var(--surface-2);
+    }
+    .intake-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      align-items: center;
+    }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 18px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: border-color 150ms, color 150ms;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--text); }
+    .intake-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .intake-label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .intake-optional { font-weight: 400; color: var(--muted); font-size: 0.82rem; }
+    .intake-input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: border-color 150ms;
+      resize: vertical;
+    }
+    .intake-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .intake-next:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     /* About layout */
     .about-inner {
       display: flex;
@@ -305,7 +418,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#process">Process</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#intake">Start a project / Get a quote</a></li>
       </ul>
     </div>
   </nav>
@@ -387,7 +500,7 @@
         <div class="disclaimer">
           <span class="disclaimer-icon">&#9888;</span>
           <p>
-            <strong>Graphics disclaimer:</strong> Video editing services cover cuts, assembly, audio work, and basic visual corrections. I do <strong>not</strong> offer motion graphics, complex animations, VFX, or advanced graphic design beyond simple text titles and basic overlays. If your project requires heavy graphics work, I&rsquo;m happy to point you toward specialists.
+            <strong>Graphics disclaimer:</strong> Video editing services cover cuts, assembly, audio work, and basic visual corrections. I do <strong>not</strong> offer motion graphics, complex animations, VFX, or advanced graphic design beyond simple text titles and basic overlays.
           </p>
         </div>
 
@@ -416,21 +529,148 @@
         </div>
       </section>
 
-      <section id="contact">
-        <p class="section-label">Contact</p>
-        <h2>Let&rsquo;s work together</h2>
-        <p>
-          Send me a link to your files and a short description of the project. I&rsquo;ll respond with next steps, timeline, and pricing.
-        </p>
+      <!-- Intake form -->
+      <section id="intake">
+        <p class="section-label">Start a project / Get a quote</p>
+        <h2>Tell me about your project</h2>
+        <p>Answer a few quick questions and I&rsquo;ll get back to you with next steps.</p>
 
-        <div class="contact-card">
-          <div>
-            <h3>Nikolas Maninis</h3>
-            <p>Vancouver, BC &middot; Remote-friendly </p>
+        <div class="intake-card">
+
+          <!-- Progress bar -->
+          <div class="intake-progress">
+            <div class="intake-bar" id="intakeBar"></div>
           </div>
-          <a class="btn-primary" href="mailto:nikolasmaninisaudio@gmail.com">
-            nikolasmaninis.io@gmail.com
-          </a>
+
+          <!-- Step 1: Service -->
+          <div class="intake-step active" id="step1">
+            <p class="intake-question">What service are you interested in?</p>
+            <div class="intake-options">
+              <label class="intake-opt">
+                <input type="radio" name="service" value="podcast" />
+                <span>🎙️ Podcast &amp; Spoken-Word Editing</span>
+              </label>
+              <label class="intake-opt">
+                <input type="radio" name="service" value="voice" />
+                <span>🎭 Voice Acting Audition Demo</span>
+              </label>
+              <label class="intake-opt">
+                <input type="radio" name="service" value="video" />
+                <span>🎬 Video Editing</span>
+              </label>
+            </div>
+            <div class="intake-row">
+              <button class="btn-primary intake-next" onclick="intakeNext(1)" disabled>Next &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Step 2a: Podcast -->
+          <div class="intake-step" id="step2-podcast">
+            <p class="intake-question">How long is the recording?</p>
+            <div class="intake-options">
+              <label class="intake-opt"><input type="radio" name="length-podcast" value="Under 30 min" /><span>Under 30 min</span></label>
+              <label class="intake-opt"><input type="radio" name="length-podcast" value="30–60 min" /><span>30–60 min</span></label>
+              <label class="intake-opt"><input type="radio" name="length-podcast" value="60–90 min" /><span>60–90 min</span></label>
+              <label class="intake-opt"><input type="radio" name="length-podcast" value="90 min+" /><span>90 min+</span></label>
+            </div>
+            <p class="intake-question" style="margin-top:18px">How many speakers?</p>
+            <div class="intake-options">
+              <label class="intake-opt"><input type="radio" name="speakers" value="1" /><span>Just me</span></label>
+              <label class="intake-opt"><input type="radio" name="speakers" value="2" /><span>2 people</span></label>
+              <label class="intake-opt"><input type="radio" name="speakers" value="3+" /><span>3 or more</span></label>
+            </div>
+            <p class="intake-question" style="margin-top:18px">Do you need music, intro, or outro added?</p>
+            <div class="intake-options">
+              <label class="intake-opt"><input type="radio" name="music" value="Yes" /><span>Yes</span></label>
+              <label class="intake-opt"><input type="radio" name="music" value="No" /><span>No</span></label>
+              <label class="intake-opt"><input type="radio" name="music" value="Not sure" /><span>Not sure yet</span></label>
+            </div>
+            <div class="intake-row">
+              <button class="btn-outline" onclick="intakeBack(2)">← Back</button>
+              <button class="btn-primary intake-next" onclick="intakeNext(2)" disabled>Next &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Step 2b: Voice demo -->
+          <div class="intake-step" id="step2-voice">
+            <p class="intake-question">How long is the demo?</p>
+            <div class="intake-options">
+              <label class="intake-opt"><input type="radio" name="length-voice" value="Under 2 min" /><span>Under 2 min</span></label>
+              <label class="intake-opt"><input type="radio" name="length-voice" value="2–5 min" /><span>2–5 min</span></label>
+              <label class="intake-opt"><input type="radio" name="length-voice" value="5 min+" /><span>5 min+</span></label>
+            </div>
+            <p class="intake-question" style="margin-top:18px">Is this for a specific audition deadline?</p>
+            <div class="intake-options">
+              <label class="intake-opt"><input type="radio" name="urgent" value="Yes, very soon" /><span>Yes, very soon</span></label>
+              <label class="intake-opt"><input type="radio" name="urgent" value="Yes, within a week" /><span>Yes, within a week</span></label>
+              <label class="intake-opt"><input type="radio" name="urgent" value="No rush" /><span>No rush</span></label>
+            </div>
+            <div class="intake-row">
+              <button class="btn-outline" onclick="intakeBack(2)">← Back</button>
+              <button class="btn-primary intake-next" onclick="intakeNext(2)" disabled>Next &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Step 2c: Video -->
+          <div class="intake-step" id="step2-video">
+            <p class="intake-question">How long is the raw footage?</p>
+            <div class="intake-options">
+              <label class="intake-opt"><input type="radio" name="length-video" value="Under 5 min" /><span>Under 5 min</span></label>
+              <label class="intake-opt"><input type="radio" name="length-video" value="5–15 min" /><span>5–15 min</span></label>
+              <label class="intake-opt"><input type="radio" name="length-video" value="15–30 min" /><span>15–30 min</span></label>
+              <label class="intake-opt"><input type="radio" name="length-video" value="30 min+" /><span>30 min+</span></label>
+            </div>
+            <p class="intake-question" style="margin-top:18px">Where will this be published?</p>
+            <div class="intake-options">
+              <label class="intake-opt"><input type="radio" name="platform" value="YouTube" /><span>YouTube</span></label>
+              <label class="intake-opt"><input type="radio" name="platform" value="Social media (short-form)" /><span>Social media (short-form)</span></label>
+              <label class="intake-opt"><input type="radio" name="platform" value="Internal / client use" /><span>Internal / client use</span></label>
+              <label class="intake-opt"><input type="radio" name="platform" value="Other" /><span>Other</span></label>
+            </div>
+            <p class="intake-question" style="margin-top:18px">Graphics needed?</p>
+            <div class="intake-options">
+              <label class="intake-opt"><input type="radio" name="graphics" value="None" /><span>None</span></label>
+              <label class="intake-opt"><input type="radio" name="graphics" value="Basic titles / lower thirds" /><span>Basic titles / lower thirds</span></label>
+              <label class="intake-opt"><input type="radio" name="graphics" value="More complex (note: outside scope)" /><span>More complex <em style="font-size:0.82rem;color:var(--muted)">(see disclaimer above)</em></span></label>
+            </div>
+            <div class="intake-row">
+              <button class="btn-outline" onclick="intakeBack(2)">← Back</button>
+              <button class="btn-primary intake-next" onclick="intakeNext(2)" disabled>Next &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Details -->
+          <div class="intake-step" id="step3">
+            <p class="intake-question">Almost done — a couple of details.</p>
+            <div class="intake-fields">
+              <label class="intake-label">Your name
+                <input class="intake-input" type="text" id="clientName" placeholder="Name" />
+              </label>
+              <label class="intake-label">Your email
+                <input class="intake-input" type="email" id="clientEmail" placeholder="email@example.com" />
+              </label>
+              <label class="intake-label">What&rsquo;s your deadline? <span class="intake-optional">(optional)</span>
+                <input class="intake-input" type="text" id="clientDeadline" placeholder="e.g. end of next week" />
+              </label>
+              <label class="intake-label">Anything else I should know? <span class="intake-optional">(optional)</span>
+                <textarea class="intake-input" id="clientNotes" rows="3" placeholder="File links, notes, questions..."></textarea>
+              </label>
+            </div>
+            <div class="intake-row">
+              <button class="btn-outline" onclick="intakeBack(3)">← Back</button>
+              <button class="btn-primary" onclick="intakeSubmit()">Send enquiry &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Done -->
+          <div class="intake-step" id="stepDone">
+            <div style="text-align:center; padding: 24px 0;">
+              <p style="font-size:2rem; margin-bottom:12px;">✅</p>
+              <h3 style="color:var(--text); margin-bottom:8px;">Your email client should open now.</h3>
+              <p>If it didn&rsquo;t, email me directly at <a href="mailto:nikolasmaninis.io@gmail.com" style="color:var(--accent)">nikolasmaninis.io@gmail.com</a></p>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -442,5 +682,98 @@
     </footer>
 
   </div>
-</body>
-</html>
+
+  <script>
+    const state = { service: null, step: 1 };
+
+    // Enable Next when a radio is selected in step 1
+    document.querySelectorAll('input[name="service"]').forEach(r => {
+      r.addEventListener('change', () => {
+        state.service = r.value;
+        document.querySelector('#step1 .intake-next').disabled = false;
+      });
+    });
+
+    // Enable Next for step 2 panels when any radio changes
+    ['podcast','voice','video'].forEach(svc => {
+      document.querySelectorAll(`#step2-${svc} input[type="radio"]`).forEach(r => {
+        r.addEventListener('change', () => {
+          const panel = document.getElementById(`step2-${svc}`);
+          // Check that at least one radio per group in this panel is selected
+          const groups = [...new Set([...panel.querySelectorAll('input[type="radio"]')].map(i => i.name))];
+          const allAnswered = groups.every(g => panel.querySelector(`input[name="${g}"]:checked`));
+          panel.querySelector('.intake-next').disabled = !allAnswered;
+        });
+      });
+    });
+
+    function showStep(id) {
+      document.querySelectorAll('.intake-step').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      updateBar();
+    }
+
+    function updateBar() {
+      const pct = state.step === 1 ? 33 : state.step === 2 ? 66 : state.step === 3 ? 90 : 100;
+      document.getElementById('intakeBar').style.width = pct + '%';
+    }
+
+    function intakeNext(fromStep) {
+      if (fromStep === 1) {
+        state.step = 2;
+        showStep(`step2-${state.service}`);
+      } else if (fromStep === 2) {
+        state.step = 3;
+        showStep('step3');
+      }
+    }
+
+    function intakeBack(fromStep) {
+      if (fromStep === 2) {
+        state.step = 1;
+        showStep('step1');
+      } else if (fromStep === 3) {
+        state.step = 2;
+        showStep(`step2-${state.service}`);
+      }
+    }
+
+    function intakeSubmit() {
+      const name     = document.getElementById('clientName').value.trim();
+      const email    = document.getElementById('clientEmail').value.trim();
+      const deadline = document.getElementById('clientDeadline').value.trim();
+      const notes    = document.getElementById('clientNotes').value.trim();
+
+      if (!name || !email) {
+        alert('Please fill in your name and email before sending.');
+        return;
+      }
+
+      const svcLabel = { podcast: 'Podcast & Spoken-Word Editing', voice: 'Voice Acting Audition Demo', video: 'Video Editing' }[state.service];
+
+      // Collect all checked radios
+      const answers = [];
+      document.querySelectorAll(`#step2-${state.service} input[type="radio"]:checked`).forEach(r => {
+        answers.push(`${r.name}: ${r.value}`);
+      });
+
+      const body = [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `Service: ${svcLabel}`,
+        ...answers,
+        deadline ? `Deadline: ${deadline}` : '',
+        notes    ? `Notes: ${notes}`    : '',
+      ].filter(Boolean).join('\n');
+
+      const subject = encodeURIComponent(`Project enquiry — ${svcLabel}`);
+      const bodyEnc = encodeURIComponent(body);
+
+      window.location.href = `mailto:nikolasmaninis.io@gmail.com?subject=${subject}&body=${bodyEnc}`;
+
+      state.step = 4;
+      showStep('stepDone');
+    }
+
+    updateBar();
+  </script>
